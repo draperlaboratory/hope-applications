@@ -17,6 +17,11 @@ all: $(TARGET)
 run:
 	isp_run_app $(TARGET) -p $(POLICY) -s qemu -r $(RUNTIME) -u
 
+sel4-lib:
+	$(CC) -c $(SOURCES) -Iisp-runtime-sel4
+	$(RISCV_AR) rcs target.a $(OBJECTS) 
+	$(info done with sel4-lib)
+
 $(TARGET): $(OBJECTS) $(ISP_OBJECTS) $(ISP_LIBS) $(ISP_DEPS)
 	$(CC) $(CFLAGS) $(ISP_INCLUDES) \
 									$(ISP_LIBS) \
