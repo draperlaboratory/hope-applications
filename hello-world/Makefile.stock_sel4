@@ -1,0 +1,3 @@
+include isp-runtime-stock_sel4.mk
+RUNTIME := stock_sel4
+include common.mk
