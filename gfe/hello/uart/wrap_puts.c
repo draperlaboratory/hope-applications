@@ -8,10 +8,10 @@ int __wrap_puts(const char *s)
 {
   int len = 0;
   while (*s != '\0') {
-    tx(uart0, *s);
+    uart0_txchar(*s);
 
     if (*s == '\n') {
-      tx(uart0, '\r');
+      uart0_txchar('\r');
     }
 
     ++len;

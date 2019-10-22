@@ -10,9 +10,9 @@ ssize_t __wrap_write(int fd, const void* ptr, size_t len)
 
     if (isatty(fd)) {
         for (size_t jj = 0; jj < len; jj++) {
-            tx(uart0, current[jj]);
+            uart0_txchar(current[jj]);
             if (current[jj] == '\n') {
-                tx(uart0, '\r');
+              uart0_txchar('\r');
             }
         }
         return len;

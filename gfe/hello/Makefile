@@ -11,7 +11,7 @@ OBJECTS      := $(C_OBJECTS) $(ASM_OBJECTS)
 RUNTIME			 := frtos
 
 UART				 := uart/
-LIBUART			 := $(UART)/build/libuart.a
+LIBUART			 := $(UART)/libuart.a
 
 LIBS				 := $(LIBUART)
 
@@ -21,7 +21,7 @@ CFLAGS			 += -ffunction-sections -fdata-sections -fno-builtin-printf
 
 LDFLAGS			 := -T link.ld -nostartfiles -defsym=_STACK_SIZE=4K
 LDFLAGS			 += -Wl,--wrap=isatty -Wl,--wrap=printf -Wl,--wrap=puts -Wl,--wrap=write
-LDFLAGS			 += -luart -L$(UART)/build
+LDFLAGS			 += -luart -L$(UART)
 
 INCLUDES		 := -I$(UART)
 INCLUDES		 += -I$(ISP_PREFIX)/riscv32-unknown-elf/include
