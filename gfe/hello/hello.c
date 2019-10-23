@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 int main() {
-  printf("Hello GFE!\n");
+  for(;;) {
+    puts("Hello GFE!\n");
+  }
   return 0;
 }

@@ -138,7 +138,7 @@ init_stack:
     /* set stack pointer */
     la	sp, _stack
 
-	j	main
+    j	_init
 
 /* Fills memory blocks */
 fill_block:

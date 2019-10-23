@@ -1,28 +1,9 @@
-/*****************************************************************************/
-/**
-*
-* @file bsp.h
-* @addtogroup bsp
-* @{
-*
-* Test
-* ## This is markdown example
-*
-* **More** markdown
-*
-* @note
-*
-* Lorem impsum
-*
-*
-******************************************************************************/
 #ifndef RISCV_P1_BSP_H
 #define RISCV_P1_BSP_H
 
 /**
  * UART defines
  */
-#define XPAR_UART_USE_POLLING_MODE 1
 #define XPAR_XUARTNS550_NUM_INSTANCES 2
 #define XPAR_DEFAULT_BAUD_RATE 115200
 

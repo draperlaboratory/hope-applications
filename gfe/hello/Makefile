@@ -1,6 +1,7 @@
 TARGET       := hello
 
-C_SOURCES		 := hello.c
+C_SOURCES		 := init.c
+C_SOURCES		 += hello.c
 C_OBJECTS		 := $(patsubst %.c,%.o,$(C_SOURCES))
 
 ASM_SOURCES  := boot.S

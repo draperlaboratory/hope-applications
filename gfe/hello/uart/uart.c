@@ -39,10 +39,6 @@ static int uart_rxbuffer(struct UartDriver *Uart, uint8_t *ptr, int len);
 static int uart_txbuffer(struct UartDriver *Uart, uint8_t *ptr, int len);
 static void uart_init(struct UartDriver *Uart, uint8_t device_id, uint8_t plic_source_id);
 
-#if !XPAR_UART_USE_POLLING_MODE
-static void UartNs550StatusHandler(void *CallBackRef, u32 Event, unsigned int EventData);
-#endif
-
 /*****************************************************************************/
 /* Global defines */
 
@@ -207,13 +203,7 @@ static void uart_init(struct UartDriver *Uart, uint8_t device_id, uint8_t plic_s
  */
 static uint8_t uart_rxchar(struct UartDriver *Uart)
 {
-#if XPAR_UART_USE_POLLING_MODE
     return XUartNs550_RecvByte(Uart->Device.BaseAddress);
-#else
-    uint8_t buf = 0;
-    uart_rxbuffer(Uart, &buf, 1);
-    return buf;
-#endif
 }
 
 /**
@@ -222,12 +212,8 @@ static uint8_t uart_rxchar(struct UartDriver *Uart)
  */
 static uint8_t uart_txchar(struct UartDriver *Uart, uint8_t c)
 {
-#if XPAR_UART_USE_POLLING_MODE
     XUartNs550_SendByte(Uart->Device.BaseAddress, c);
     return c;
-#else
-    return uart_txchar(Uart, c);
-#endif
 }
 
 /**
@@ -238,13 +224,12 @@ static int uart_txbuffer(struct UartDriver *Uart, uint8_t *ptr, int len)
 {
     static int returnval;
 
-#if XPAR_UART_USE_POLLING_MODE
     for (int i = 0; i < len; i++)
     {
         XUartNs550_SendByte(Uart->Device.BaseAddress, ptr[i]);
     }
     returnval = len;
-#endif /* XPAR_UART_USE_POLLING_MODE */
+
     return returnval;
 }
 
@@ -256,12 +241,11 @@ static int uart_rxbuffer(struct UartDriver *Uart, uint8_t *ptr, int len)
 {
     static int returnval;
 
-#if XPAR_UART_USE_POLLING_MODE
     for (int i = 0; i < len; i++)
     {
         ptr[i] = XUartNs550_RecvByte(Uart->Device.BaseAddress);
     }
     returnval = len;
-#endif /* XPAR_UART_USE_POLLING_MODE */
+
     return returnval;
 }
