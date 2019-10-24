@@ -8,7 +8,7 @@ ASM_OBJECTS  := $(patsubst %.S,%.o,$(ASM_SOURCES))
 
 OBJECTS      := $(C_OBJECTS) $(ASM_OBJECTS)
 
-CFLAGS			 += -march=rv32ima -mabi=ilp32 -mcmodel=medium
+CFLAGS			 += -march=rv32i -mabi=ilp32 -mcmodel=medium
 CFLAGS			 += -Wall -Wextra -O0 -g3 -std=gnu11
 CFLAGS			 += -ffunction-sections -fdata-sections -fno-builtin-printf
 
