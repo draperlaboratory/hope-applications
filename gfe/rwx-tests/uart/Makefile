@@ -18,6 +18,7 @@ SRCS   = uart.c \
 				 wrap_isatty.c \
 				 wrap_printf.c \
 				 wrap_puts.c \
+				 wrap_read.c \
 				 wrap_write.c \
 			   xilinx/common/xbasic_types.c \
 				 xilinx/common/xil_io.c \
