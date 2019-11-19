@@ -9,8 +9,8 @@ POL_NAME=rwx
 
 # compile the kernel first
 cd $HOME/pex-kernel
-git checkout tag-mem-hexdump
-FPGA=gfe make
+git checkout master
+FPGA=gfe-sim DEBUG=1 make
 
 # create the main_blinky app; how one creates an app is
 # very much application dependent
@@ -31,7 +31,7 @@ isp_run_app $HOME/hope-src/FreeRTOS/FreeRTOS/Demo/RISC-V_Galois_P1/${APP_NAME} -
 ## create a mem image of tags that can be preloaded in the kernel memory
 cd $HOME/pex-kernel/tag_mem_hexdump
 ## the below shall create a Mem.hex file
-./tag_mem_hexdump $APP_BASE/isp-run-${APP_NAME}-${POL_NAME}/bininfo/${APP_NAME}.taginfo
+./tag_mem_hexdump $APP_BASE/isp-run-${APP_NAME}-${POL_NAME}/bininfo/${APP_NAME}.taginfo Mem.hex
 
 ## create a VSIM simulation executable for the hardware
 ## make sure you check out the right submodules and right branches
