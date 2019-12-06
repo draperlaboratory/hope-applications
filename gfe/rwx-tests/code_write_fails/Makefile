@@ -11,7 +11,7 @@ OBJECTS      := $(C_OBJECTS) $(ASM_OBJECTS)
 
 RUNTIME			 := frtos
 
-UART				 := ../uart/
+UART				 := ../../uart/
 LIBUART			 := $(UART)/libuart.a
 
 LIBS				 := $(LIBUART)
