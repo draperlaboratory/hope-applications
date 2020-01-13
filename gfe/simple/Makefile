@@ -22,7 +22,7 @@ CC					 := $(ISP_PREFIX)/bin/clang
 
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS) $(LIBS)
+$(TARGET): $(OBJECTS) $(LIBS) link.ld
 	$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(C_OBJECTS): %.o: %.c
