@@ -138,7 +138,13 @@ init_stack:
     /* set stack pointer */
     la	sp, _stack
 
-    j	_init
+    jal main
+    slli gp, a0, 1
+    ori gp, gp, 1
+    la t0, tohost
+write_tohost:
+    sw gp, 0(t0)
+    j write_tohost
 
 /* Fills memory blocks */
 fill_block:
