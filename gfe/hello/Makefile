@@ -1,6 +1,7 @@
 TARGET       := hello
 
-C_SOURCES		 := init.c
+COMMON := ../common
+
 C_SOURCES		 += hello.c
 C_OBJECTS		 := $(patsubst %.c,%.o,$(C_SOURCES))
 
